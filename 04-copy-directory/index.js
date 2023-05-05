@@ -14,7 +14,7 @@ function copyFiles() {
           const sFile = path.join(sourcePath, file.name);
           const tFile = path.join(targetPath, file.name);
           fs.promises.copyFile(sFile, tFile)
-            .catch(error => console.log(error))
+            .catch(error => console.log(error));
         }
       });
     })

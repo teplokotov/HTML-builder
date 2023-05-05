@@ -17,11 +17,11 @@ fs.readdir(fullPath, options, (error, files) => {
           if (error)
             console.log(error);
           else { 
-            size = (stats.size / 1024).toFixed(3);
+            const size = (stats.size / 1024).toFixed(3);
             console.log(`${name} - ${extname} - ${size}kb`);
           }
         });
       }
-    })
+    });
   }
-})
+});
