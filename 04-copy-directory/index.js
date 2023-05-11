@@ -5,6 +5,7 @@ const sourcePath = path.join(__dirname, 'files');
 const targetPath = path.join(__dirname, 'files-copy');
 const optionsMkDir = { recursive: true };
 const optionsReadDir = { withFileTypes: true };
+const optionsRmDir = { recursive: true };
 
 function copyFiles() {
   fs.promises.readdir(sourcePath, optionsReadDir)
@@ -22,6 +23,12 @@ function copyFiles() {
     .then(() => console.log('Файлы скопированы'));
 }
 
-fs.promises.mkdir(targetPath, optionsMkDir)
-  .catch((error) => console.log(error))
-  .then(() => copyFiles());
+function makeDir(tPath) {
+  fs.promises.mkdir(tPath, optionsMkDir)
+    .catch((error) => console.log(error))
+    .then(() => copyFiles());
+}
+
+fs.promises.rm(targetPath, optionsRmDir)
+  .catch(error => console.log(error))
+  .then(() => makeDir(targetPath));
