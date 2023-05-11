@@ -5,7 +5,7 @@ const sourcePath = path.join(__dirname, 'files');
 const targetPath = path.join(__dirname, 'files-copy');
 const optionsMkDir = { recursive: true };
 const optionsReadDir = { withFileTypes: true };
-const optionsRmDir = { recursive: true };
+const optionsRmDir = { force: true, recursive: true };
 
 function copyFiles() {
   fs.promises.readdir(sourcePath, optionsReadDir)
